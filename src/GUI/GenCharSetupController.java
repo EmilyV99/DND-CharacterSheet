@@ -11,7 +11,7 @@ public class GenCharSetupController
 	@FXML
 	TextField name, age;
 	@FXML
-	Label error;
+	Label error, race_label, class_label;
 	
 	@FXML
 	public boolean updateText(ActionEvent e)

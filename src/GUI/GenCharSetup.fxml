@@ -7,8 +7,14 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GenCharSetupController">
     <Button defaultButton="true" layoutX="208.0" layoutY="330.0" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="91.0" text="Next" />
     <Button cancelButton="true" layoutX="300.0" layoutY="330.0" mnemonicParsing="false" onAction="#onClose" prefHeight="26.0" prefWidth="91.0" text="Back" />
-   <TextField fx:id="name" layoutX="225.0" layoutY="74.0" onAction="#updateText" promptText="Character Name" />
-   <TextField fx:id="age" layoutX="226.0" layoutY="107.0" onAction="#updateText" prefHeight="26.0" prefWidth="91.0" promptText="Age" />
-   <Text layoutX="317.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Years" />
+   <TextField fx:id="name" alignment="CENTER" layoutX="225.0" layoutY="74.0" onAction="#updateText" promptText="Character Name" />
+   <TextField fx:id="age" alignment="CENTER_RIGHT" layoutX="226.0" layoutY="107.0" onAction="#updateText" prefHeight="26.0" prefWidth="114.0" promptText="Age" />
+   <Text layoutX="339.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Years" />
    <Label fx:id="error" alignment="CENTER" layoutY="47.0" minWidth="-Infinity" prefHeight="18.0" prefWidth="600.0" textAlignment="CENTER" textFill="#b50d0d" />
+   <Button layoutX="122.0" layoutY="187.0" mnemonicParsing="false" text="Change Race" />
+   <Button layoutX="391.0" layoutY="187.0" mnemonicParsing="false" text="Change Class" />
+   <Label fx:id="race_label" alignment="CENTER" layoutX="11.0" layoutY="161.0" prefHeight="18.0" prefWidth="307.0" text="Human" textAlignment="CENTER" />
+   <Label fx:id="class_label" alignment="CENTER" layoutX="287.0" layoutY="161.0" prefHeight="18.0" prefWidth="294.0" text="Barbarian" textAlignment="CENTER" />
+   <Label layoutX="151.0" layoutY="144.0" text="Race" />
+   <Label layoutX="420.0" layoutY="144.0" text="Class" />
 </AnchorPane>
