@@ -2,13 +2,24 @@ package GUI;
 
 import DND.CharGen;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 
 public class GenStartController
 {
 	@FXML
 	private ChoiceBox<String> typechoice;
+	
+	@FXML
+	private Button nextbtn;
+	
+	@FXML
+	public void updateTypeChoice(Event e)
+	{
+		nextbtn.setDisable(typechoice.getValue() == null || typechoice.getValue().equals(""));
+	}
 	
 	@FXML
 	public void onClose(ActionEvent e)
@@ -20,7 +31,7 @@ public class GenStartController
 	public void onNext(ActionEvent e)
 	{
 		String s = typechoice.getValue();
-		if(s == null || s.equals(""))
+		if (s == null || s.equals(""))
 		{
 			Main_Gui.gen.statStyle = CharGen.StatStyle.NULL;
 		}
@@ -41,6 +52,24 @@ public class GenStartController
 			Main_Gui.gen.statStyle = CharGen.StatStyle.POINT_BUY;
 		}
 		if (Main_Gui.gen.confirm())
-			Main_Gui.stage.setScene(Main_Gui.gen_stats);
+		{
+			switch (Main_Gui.gen.statStyle)
+			{
+				case POINT_BUY:
+					Main_Gui.statspoint_controller.updateText();
+					Main_Gui.stage.setScene(Main_Gui.gen_stats_pointbuy);
+					break;
+				case ROLL_RANDOM:
+					Main_Gui.statsrand_controller.updateText();
+					Main_Gui.stage.setScene(Main_Gui.gen_stats_rand);
+					break;
+				case ARRAY:
+				case ROLL_ASSIGN:
+					Main_Gui.statsarr_controller.updateText();
+					Main_Gui.statsarr_controller.resetButtons();
+					Main_Gui.stage.setScene(Main_Gui.gen_stats_array);
+					break;
+			}
+		}
 	}
 }

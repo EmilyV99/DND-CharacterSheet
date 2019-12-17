@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GenCharSetupController">
+    <Button defaultButton="true" layoutX="208.0" layoutY="330.0" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="91.0" text="Next" />
+    <Button cancelButton="true" layoutX="300.0" layoutY="330.0" mnemonicParsing="false" onAction="#onClose" prefHeight="26.0" prefWidth="91.0" text="Back" />
+   <TextField fx:id="name" layoutX="225.0" layoutY="74.0" onAction="#updateText" promptText="Character Name" />
+   <TextField fx:id="age" layoutX="226.0" layoutY="107.0" onAction="#updateText" prefHeight="26.0" prefWidth="91.0" promptText="Age" />
+   <Text layoutX="317.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Years" />
+   <Label fx:id="error" alignment="CENTER" layoutY="47.0" minWidth="-Infinity" prefHeight="18.0" prefWidth="600.0" textAlignment="CENTER" textFill="#b50d0d" />
+</AnchorPane>

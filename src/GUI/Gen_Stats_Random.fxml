@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GenStats_Random_Controller">
+   <Button defaultButton="true" layoutX="208.0" layoutY="330.0" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="91.0" text="Next" />
+   <Button cancelButton="true" layoutX="300.0" layoutY="330.0" mnemonicParsing="false" onAction="#onClose" prefHeight="26.0" prefWidth="91.0" text="Back" />
+   <Text layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Str: " wrappingWidth="56.501953125" />
+   <Text layoutX="208.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dex:" wrappingWidth="56.501953125" />
+   <Text layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Con:" wrappingWidth="56.501953125" />
+   <Text layoutX="334.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Int:" wrappingWidth="56.501953125" />
+   <Text layoutX="334.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wis:" wrappingWidth="56.501953125" />
+   <Text layoutX="334.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cha:" wrappingWidth="56.501953125" />
+   <Text fx:id="strength" layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+   <Text fx:id="dexterity" layoutX="208.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+   <Text fx:id="constitution" layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+   <Text fx:id="intelligence" layoutX="334.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+   <Text fx:id="wisdom" layoutX="334.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+   <Text fx:id="charisma" layoutX="334.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+   <Button layoutX="254.0" layoutY="267.0" mnemonicParsing="false" onAction="#onReset" prefHeight="26.0" prefWidth="91.0" text="Re-Roll" />
+</AnchorPane>

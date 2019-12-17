@@ -4,7 +4,8 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainMenuController">
-    <Label alignment="CENTER" prefHeight="18.0" prefWidth="600.0" text="Foo Bar" textAlignment="CENTER" />
-   <Button layoutX="182.0" layoutY="103.0" mnemonicParsing="false" onAction="#onNewChar" text="New DND.Character" textAlignment="CENTER" />
-   <Button layoutX="325.0" layoutY="103.0" mnemonicParsing="false" onAction="#onLoadChar" text="Load DND.Character" />
+    <Label alignment="CENTER" prefHeight="18.0" prefWidth="600.0" text="Main Menu" textAlignment="CENTER" />
+   <Button layoutX="139.0" layoutY="103.0" mnemonicParsing="false" onAction="#onNewChar" text="New DND.Character" textAlignment="CENTER" />
+   <Button layoutX="338.0" layoutY="103.0" mnemonicParsing="false" onAction="#onLoadChar" text="Load DND.Character" />
+   <ListView fx:id="charlist" layoutX="200.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" />
 </AnchorPane>
