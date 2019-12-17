@@ -1,3 +1,5 @@
+package DND;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -17,7 +19,7 @@ public class CharGen
 		rand = new Random();
 	}
 	
-	public static CharGen makeCharacter()
+	public static CharGen init()
 	{
 		if (wip == null)
 			new CharGen();
@@ -59,7 +61,9 @@ public class CharGen
 			case ROLL_RANDOM:
 				c.str = statRoll();
 				break;
+			case ROLL_ASSIGN:
 			default:
+				break;
 		}
 	}
 	
