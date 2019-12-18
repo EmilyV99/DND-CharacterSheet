@@ -10,6 +10,8 @@ public abstract class GenericGuiHelper
 	public static void makeTextFieldLimited(final TextField tf, TextFieldType type, int maxChars, int maxValue)
 	{
 		String regex;
+		String regex_leading0 = "(-?)0*([0-9]+)";
+		String replace_leading0 = "$1$2";
 		switch (type)
 		{
 			case ALPHABETIC:
@@ -36,6 +38,7 @@ public abstract class GenericGuiHelper
 				{
 					if (isInt)
 					{
+						text = text.replaceAll(regex_leading0, replace_leading0);
 						if (Integer.parseInt(text) > maxValue)
 						{
 							change.setText("" + maxValue);
@@ -45,6 +48,7 @@ public abstract class GenericGuiHelper
 							 */
 						}
 					}
+					
 					return change;
 				}
 			}
