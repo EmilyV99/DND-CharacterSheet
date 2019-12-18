@@ -180,4 +180,24 @@ public class CharGen
 	{
 		NULL, ARRAY, ROLL_ASSIGN, ROLL_RANDOM, POINT_BUY, MANUAL
 	}
+	
+	public static String getStatStyleString(StatStyle style)
+	{
+		switch(style)
+		{
+			case ARRAY:
+				return "Array";
+			case ROLL_ASSIGN:
+				return "Roll (Assign)";
+			case ROLL_RANDOM:
+				return "Roll (Random)";
+			case POINT_BUY:
+				return "Point Buy";
+			case MANUAL:
+				return "Manual";
+			case NULL:
+			default:
+				return null;
+		}
+	}
 }

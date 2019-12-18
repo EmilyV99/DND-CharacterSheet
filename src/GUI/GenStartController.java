@@ -10,7 +10,7 @@ import javafx.scene.control.ChoiceBox;
 public class GenStartController
 {
 	@FXML
-	private ChoiceBox<String> typechoice;
+	public ChoiceBox<String> typechoice;
 	
 	@FXML
 	private Button nextbtn;
@@ -21,14 +21,7 @@ public class GenStartController
 		nextbtn.setDisable(typechoice.getValue() == null || typechoice.getValue().equals(""));
 	}
 	
-	@FXML
-	public void onClose(ActionEvent e)
-	{
-		Main_Gui.stage.setScene(Main_Gui.menu);
-	}
-	
-	@FXML
-	public void onNext(ActionEvent e)
+	private void setStatStyle()
 	{
 		String s = typechoice.getValue();
 		if (s == null || s.equals(""))
@@ -55,6 +48,19 @@ public class GenStartController
 		{
 			Main_Gui.gen.statStyle = CharGen.StatStyle.MANUAL;
 		}
+	}
+	
+	@FXML
+	public void onClose(ActionEvent e)
+	{
+		setStatStyle();
+		Main_Gui.stage.setScene(Main_Gui.menu);
+	}
+	
+	@FXML
+	public void onNext(ActionEvent e)
+	{
+		setStatStyle();
 		if (Main_Gui.gen.confirm())
 		{
 			switch (Main_Gui.gen.statStyle)

@@ -11,32 +11,32 @@
    <Label fx:id="error2" alignment="CENTER" layoutY="65.0" minWidth="-Infinity" prefHeight="18.0" prefWidth="600.0" textAlignment="CENTER" textFill="#b50d0d" />
    <Text layoutX="191.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Str:  " textAlignment="RIGHT" wrappingWidth="46.00000077486038" />
    <Button layoutX="254.0" layoutY="267.0" mnemonicParsing="false" onAction="#onReset" prefHeight="26.0" prefWidth="91.0" text="Reset" />
-   <TextField fx:id="strength" layoutX="238.0" layoutY="149.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0">
+   <TextField fx:id="strength" layoutX="238.0" layoutY="149.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0" promptText="Str">
       <font>
          <Font size="8.0" />
       </font>
    </TextField>
-   <TextField fx:id="dexterity" layoutX="238.0" layoutY="165.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0">
+   <TextField fx:id="dexterity" layoutX="238.0" layoutY="165.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0" promptText="Dex">
       <font>
          <Font size="8.0" />
       </font>
    </TextField>
-   <TextField fx:id="constitution" layoutX="238.0" layoutY="182.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0">
+   <TextField fx:id="constitution" layoutX="238.0" layoutY="182.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0" promptText="Con">
       <font>
          <Font size="8.0" />
       </font>
    </TextField>
-   <TextField fx:id="intelligence" layoutX="362.0" layoutY="148.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0">
+   <TextField fx:id="intelligence" layoutX="362.0" layoutY="148.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0" promptText="Int">
       <font>
          <Font size="8.0" />
       </font>
    </TextField>
-   <TextField fx:id="wisdom" layoutX="362.0" layoutY="164.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0">
+   <TextField fx:id="wisdom" layoutX="362.0" layoutY="164.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0" promptText="Wis">
       <font>
          <Font size="8.0" />
       </font>
    </TextField>
-   <TextField fx:id="charisma" layoutX="362.0" layoutY="181.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0">
+   <TextField fx:id="charisma" layoutX="362.0" layoutY="181.0" onAction="#updateText" prefHeight="18.0" prefWidth="32.0" promptText="Cha">
       <font>
          <Font size="8.0" />
       </font>

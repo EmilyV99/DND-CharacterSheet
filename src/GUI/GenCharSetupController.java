@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.Helpers.GenericGuiHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -11,19 +12,19 @@ public class GenCharSetupController
 	@FXML
 	TextField name, age;
 	@FXML
-	Label error, race_label, class_label;
+	Label race_label, class_label;
+	
+	private static boolean initialized;
+	public void init()
+	{
+		if(initialized) return;
+		initialized = true;
+		GenericGuiHelper.filterIntegerTextField(age, 0, Integer.MAX_VALUE, 10);
+	}
 	
 	@FXML
-	public boolean updateText(ActionEvent e)
+	public void updateText(ActionEvent e)
 	{
-		boolean ret = true;
-		String a = age.getText();
-		a = a.replaceAll("[^0-9]", "");
-		if (!a.equals(age.getText()))
-			ret = false;
-		age.setText(a);
-		error.setText("");
-		return ret;
 	}
 	
 	public void clear()
@@ -38,12 +39,6 @@ public class GenCharSetupController
 	{
 		try
 		{
-			if (!updateText(null))
-			{
-				error.setText("Invalid field data! Fields have been fixed to rules, check that they are still correct.");
-				System.err.println("foo");
-				return;
-			}
 			Main_Gui.gen.c.name = name.getText();
 			Main_Gui.gen.c.age =  age.getText().equals("") ? 0 : Integer.parseInt(age.getText());
 			if (Main_Gui.gen.back())
@@ -80,11 +75,6 @@ public class GenCharSetupController
 	{
 		try
 		{
-			if (!updateText(null))
-			{
-				error.setText("Invalid field data! Fields have been fixed to rules, check that they are still correct" + ".");
-				return;
-			}
 			Main_Gui.gen.c.name = name.getText();
 			Main_Gui.gen.c.age = Integer.parseInt(age.getText());
 			if (Main_Gui.gen.confirm())

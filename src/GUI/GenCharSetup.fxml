@@ -10,7 +10,6 @@
    <TextField fx:id="name" alignment="CENTER" layoutX="225.0" layoutY="74.0" onAction="#updateText" promptText="Character Name" />
    <TextField fx:id="age" alignment="CENTER_RIGHT" layoutX="226.0" layoutY="107.0" onAction="#updateText" prefHeight="26.0" prefWidth="114.0" promptText="Age" />
    <Text layoutX="339.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Years" />
-   <Label fx:id="error" alignment="CENTER" layoutY="47.0" minWidth="-Infinity" prefHeight="18.0" prefWidth="600.0" textAlignment="CENTER" textFill="#b50d0d" />
    <Button layoutX="122.0" layoutY="187.0" mnemonicParsing="false" text="Change Race" />
    <Button layoutX="391.0" layoutY="187.0" mnemonicParsing="false" text="Change Class" />
    <Label fx:id="race_label" alignment="CENTER" layoutX="11.0" layoutY="161.0" prefHeight="18.0" prefWidth="307.0" text="Human" textAlignment="CENTER" />

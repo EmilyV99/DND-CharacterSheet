@@ -22,6 +22,7 @@ public class MainMenuController
 	public void onNewChar(ActionEvent e)
 	{
 		Main_Gui.gen = CharGen.init();
+		Main_Gui.genstart_controller.typechoice.setValue(CharGen.getStatStyleString(Main_Gui.gen.statStyle));
 		Main_Gui.stage.setScene(Main_Gui.gen_start);
 	}
 	@FXML

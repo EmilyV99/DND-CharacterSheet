@@ -36,6 +36,7 @@ public class GenStats_Random_Controller
 	{
 		if (Main_Gui.gen.confirm())
 		{
+			Main_Gui.charsetup_controller.init();
 			Main_Gui.charsetup_controller.clear();
 			Main_Gui.stage.setScene(Main_Gui.gen_char_setup);
 		}
