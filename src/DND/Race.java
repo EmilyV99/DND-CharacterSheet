@@ -4,6 +4,7 @@ public class Race
 {
 	String name;
 	String description;
+	
 	public String toString()
 	{
 		StringBuilder buffer = new StringBuilder();
@@ -12,11 +13,13 @@ public class Race
 		buffer.append(description);
 		return buffer.toString();
 	}
+	
 	public Race(String name, String description)
 	{
 		this.name = name;
 		this.description = description;
 	}
+	
 	public Race(String fromString)
 	{
 		String[] from = fromString.split(delimiter);
