@@ -51,6 +51,10 @@ public class GenStartController
 		{
 			Main_Gui.gen.statStyle = CharGen.StatStyle.POINT_BUY;
 		}
+		else if (s.equals("Manual"))
+		{
+			Main_Gui.gen.statStyle = CharGen.StatStyle.MANUAL;
+		}
 		if (Main_Gui.gen.confirm())
 		{
 			switch (Main_Gui.gen.statStyle)
@@ -68,6 +72,11 @@ public class GenStartController
 					Main_Gui.statsarr_controller.updateText();
 					Main_Gui.statsarr_controller.resetButtons();
 					Main_Gui.stage.setScene(Main_Gui.gen_stats_array);
+					break;
+				case MANUAL:
+					Main_Gui.statsmanual_controller.init();
+					Main_Gui.statsmanual_controller.clear();
+					Main_Gui.stage.setScene(Main_Gui.gen_stats_manual);
 					break;
 			}
 		}

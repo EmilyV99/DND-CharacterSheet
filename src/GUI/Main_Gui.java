@@ -12,10 +12,11 @@ import java.net.URL;
 public class Main_Gui extends Application
 {
 	public static Stage stage;
-	public static Scene menu, charsheet, inventory, gen_start, gen_stats_rand, gen_stats_array, gen_stats_pointbuy, gen_char_setup;
+	public static Scene menu, charsheet, inventory, gen_start, gen_stats_rand, gen_stats_array, gen_stats_pointbuy, gen_char_setup, gen_stats_manual;
 	protected static GenStats_Array_Controller statsarr_controller;
 	protected static GenStats_PointBuy_Controller statspoint_controller;
 	protected static GenStats_Random_Controller statsrand_controller;
+	protected static GenStats_Manual_Controller statsmanual_controller;
 	public static GenStartController genstart_controller;
 	public static MainMenuController main_controller;
 	protected static GenCharSetupController charsetup_controller;
@@ -78,6 +79,14 @@ public class Main_Gui extends Application
 				loader.setLocation(u);
 				gen_char_setup = new Scene(loader.load());
 				charsetup_controller = loader.getController();
+			}
+			
+			{
+				FXMLLoader loader = new FXMLLoader();
+				URL u = getClass().getResource("/GUI/Gen_Stats_Manual.fxml");
+				loader.setLocation(u);
+				gen_stats_manual = new Scene(loader.load());
+				statsmanual_controller = loader.getController();
 			}
 			
 			stage.setTitle("D&D Digital DND.Character Sheet");

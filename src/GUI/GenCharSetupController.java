@@ -29,7 +29,7 @@ public class GenCharSetupController
 	public void clear()
 	{
 		name.setText(Main_Gui.gen.c.name);
-		age.setText("" + Main_Gui.gen.c.age);
+		age.setText(Main_Gui.gen.c.age > 0 ? "" + Main_Gui.gen.c.age : "");
 		updateText(null);
 	}
 	
@@ -40,14 +40,14 @@ public class GenCharSetupController
 		{
 			if (!updateText(null))
 			{
-				error.setText("Invalid field data! Fields have been fixed to rules, check that they are still correct" + ".");
+				error.setText("Invalid field data! Fields have been fixed to rules, check that they are still correct.");
+				System.err.println("foo");
 				return;
 			}
 			Main_Gui.gen.c.name = name.getText();
-			Main_Gui.gen.c.age = Integer.parseInt(age.getText());
+			Main_Gui.gen.c.age =  age.getText().equals("") ? 0 : Integer.parseInt(age.getText());
 			if (Main_Gui.gen.back())
 			{
-				//Main_Gui.genstart_controller.onNext(null);
 				Scene sc;
 				switch (Main_Gui.gen.statStyle)
 				{
@@ -60,6 +60,9 @@ public class GenCharSetupController
 						break;
 					case ROLL_RANDOM:
 						sc = Main_Gui.gen_stats_rand;
+						break;
+					case MANUAL:
+						sc = Main_Gui.gen_stats_manual;
 						break;
 					default:
 						return;

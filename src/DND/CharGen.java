@@ -111,6 +111,15 @@ public class CharGen
 				c.wis = 8;
 				c.cha = 8;
 				break;
+			case MANUAL:
+				c.str = 0;
+				c.dex = 0;
+				c.con = 0;
+				c.intel = 0;
+				c.wis = 0;
+				c.cha = 0;
+				points = 0;
+				break;
 		}
 	}
 	
@@ -169,6 +178,6 @@ public class CharGen
 	
 	public enum StatStyle
 	{
-		NULL, ARRAY, ROLL_ASSIGN, ROLL_RANDOM, POINT_BUY
+		NULL, ARRAY, ROLL_ASSIGN, ROLL_RANDOM, POINT_BUY, MANUAL
 	}
 }
