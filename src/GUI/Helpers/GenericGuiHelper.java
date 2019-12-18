@@ -10,7 +10,7 @@ public abstract class GenericGuiHelper
 	public static void makeTextFieldLimited(final TextField tf, TextFieldType type, int maxChars, int maxValue)
 	{
 		String regex;
-		String regex_leading0 = "(-?)0*([0-9]+)";
+		String regex_leading0 = "(-?)0+([0-9]+)";
 		String replace_leading0 = "$1$2";
 		switch (type)
 		{
@@ -34,26 +34,29 @@ public abstract class GenericGuiHelper
 			try
 			{
 				String text = change.getControlNewText();
-				if (text.matches(regex) && (maxChars == 0 || text.length() < maxChars))
+				if ((text.matches(regex) || text.equals("")) && (maxChars == 0 || text.length() <= maxChars))
 				{
 					if (isInt)
 					{
-						text = text.replaceAll(regex_leading0, replace_leading0);
-						if (Integer.parseInt(text) > maxValue)
+						//text = text.replaceAll(regex_leading0, replace_leading0);
+						if (!text.equals("") && Integer.parseInt(text) > maxValue)
 						{
-							change.setText("" + maxValue);
-							/*
 							tf.setText("" + maxValue);
-							return null;
-							 */
+							change.setText("");
+							text = tf.getText();
+						}
+						if (text.matches(regex_leading0))
+						{
+							tf.setText(text.replaceAll(regex_leading0, replace_leading0));
+							change.setText("");
 						}
 					}
-					
 					return change;
 				}
 			}
 			catch (Exception ignored)
-			{}
+			{
+			}
 			return null;
 		};
 		tf.setTextFormatter(new TextFormatter<TextFormatter.Change>(filter));
