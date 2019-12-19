@@ -1,6 +1,7 @@
 package GUI;
 
 import DND.CharGen;
+import DND.Main_Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -101,6 +102,7 @@ public class Main_Gui extends Application
 				                        System.out.println("Closing!");
 				                        System.exit(0);
 			                        });
+			Main_Game.init(); //Initialize the DND environment
 			stage.show();
 		}
 		catch (IOException e)

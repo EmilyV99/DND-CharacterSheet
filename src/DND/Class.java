@@ -1,18 +1,11 @@
 package DND;
 
+import com.google.gson.Gson;
+
 public class Class
 {
 	ClassData data;
 	byte level;
-	
-	public String toString()
-	{
-		StringBuilder buffer = new StringBuilder();
-		buffer.append(data.toString());
-		buffer.append(delimiter);
-		buffer.append(level);
-		return buffer.toString();
-	}
 	
 	public Class(ClassData data, byte level)
 	{
@@ -20,11 +13,14 @@ public class Class
 		this.level = level;
 	}
 	
-	public Class(String fromstring)
+	public static Class fromString(String json)
 	{
-		String[] from = fromstring.split(delimiter);
-		data = new ClassData(from[0]);
-		level = Byte.parseByte(from[1]);
+		return new Gson().fromJson(json, Class.class);
+	}
+	
+	public String toString()
+	{
+		return new Gson().toJson(this);
 	}
 	
 	private static String delimiter = "~cdelim~";

@@ -1,18 +1,11 @@
 package DND;
 
+import com.google.gson.Gson;
+
 public class ClassData
 {
 	String title;
 	String description;
-	
-	public String toString()
-	{
-		StringBuilder buffer = new StringBuilder();
-		buffer.append(title);
-		buffer.append(delimiter);
-		buffer.append(description);
-		return buffer.toString();
-	}
 	
 	public ClassData(String title, String description)
 	{
@@ -20,23 +13,29 @@ public class ClassData
 		this.description = description;
 	}
 	
-	public ClassData(String fromstring)
+	public static ClassData fromString(String json)
 	{
-		String[] from = fromstring.split(delimiter);
-		title = from[0];
-		description = from[1];
+		return new Gson().fromJson(json, ClassData.class);
 	}
 	
-	private static String delimiter = "~cddelim~";
+	public String toString()
+	{
+		return new Gson().toJson(this);
+	}
 	//
 	public static ClassData[] packClasses;
 	private static boolean initialized;
 	
-	private static void initClassData()
+	public static void init()
 	{
 		if (initialized)
 			return;
 		initialized = true;
+		initClassData();
+	}
+	
+	private static void initClassData()
+	{
 		packClasses = new ClassData[12];
 		packClasses[DefaultClass.Barbarian.ordinal()] = new ClassData("Barbarian", "A fierce warrior of primitive background who can enter a battle rage");
 		packClasses[DefaultClass.Bard.ordinal()] = new ClassData("Bard", "An inspiring magician whose power echoes the music of creation");
@@ -54,8 +53,6 @@ public class ClassData
 	
 	public ClassData getClass(DefaultClass className)
 	{
-		if (!initialized)
-			initClassData();
 		return packClasses[className.ordinal()];
 	}
 	
