@@ -13,15 +13,18 @@ public class Class
 		this.level = level;
 	}
 	
-	public static Class fromString(String json)
+	public static Class fromJson(String json)
 	{
 		return new Gson().fromJson(json, Class.class);
 	}
 	
-	public String toString()
+	public String toJson()
 	{
 		return new Gson().toJson(this);
 	}
 	
-	private static String delimiter = "~cdelim~";
+	public String toString()
+	{
+		return data.toString();
+	}
 }

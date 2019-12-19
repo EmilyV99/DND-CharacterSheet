@@ -9,14 +9,11 @@ import javafx.scene.control.ListView;
 public class MainMenuController
 {
 	@FXML
-	ListView<String> charlist;
+	ListView<Character> charlist;
 	public void refreshChars()
 	{
 		charlist.getItems().removeAll(charlist.getItems());
-		for(Character c : Character.loaded)
-		{
-			charlist.getItems().add(c.name);
-		}
+		charlist.getItems().addAll(Character.loaded);
 	}
 	@FXML
 	public void onNewChar(ActionEvent e)

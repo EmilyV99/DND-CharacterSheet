@@ -15,13 +15,18 @@ public class Character
 	
 	protected Character() {}
 	
-	public static Character fromString(String json)
+	public static Character fromJson(String json)
 	{
 		return new Gson().fromJson(json, Character.class);
 	}
 	
-	public String toString()
+	public String toJson()
 	{
 		return new Gson().toJson(this);
+	}
+	
+	public String toString()
+	{
+		return name;
 	}
 }

@@ -23,6 +23,8 @@ public class Race
 	ArrayList<String> traits = new ArrayList<>();
 	String languages;
 	
+	public Race() {}
+	
 	public Race(int str, int dex, int con, int intel, int wis, int cha, int assignable_points, String name, String description, String description_age, String description_physical, String description_society, String trait_age, String trait_alignment, String trait_size, String trait_speed, String[] traits, String languages)
 	{
 		this.str = (byte) str;
@@ -76,7 +78,7 @@ public class Race
 		packRaces[DefaultRace.Tiefling.ordinal()] = new Race(0, 0, 0, 0, 0, 0, 0, "Tiefling", "", "", "", "", "", "", "", "", new String[]{""}, "");
 	}
 	
-	public static Race fromString(String json)
+	public static Race fromJson(String json)
 	{
 		Race r = new Gson().fromJson(json, Race.class);
 		if (!r.isLoaded())
@@ -89,9 +91,14 @@ public class Race
 		return packRaces[raceName.ordinal()];
 	}
 	
-	public String toString()
+	public String toJson()
 	{
 		return new Gson().toJson(this);
+	}
+	
+	public String toString()
+	{
+		return name;
 	}
 	
 	@SuppressWarnings("RedundantIfStatement")

@@ -13,14 +13,19 @@ public class ClassData
 		this.description = description;
 	}
 	
-	public static ClassData fromString(String json)
+	public static ClassData fromJson(String json)
 	{
 		return new Gson().fromJson(json, ClassData.class);
 	}
 	
-	public String toString()
+	public String toJson()
 	{
 		return new Gson().toJson(this);
+	}
+	
+	public String toString()
+	{
+		return title;
 	}
 	//
 	public static ClassData[] packClasses;
