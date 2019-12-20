@@ -15,11 +15,11 @@ import java.util.Arrays;
 public class EditRaceController extends SceneController
 {
 	@FXML
-	Label nameReq, descriptionReq, trait_ageReq;
+	Label nameReq, descriptionReq, description_physicalReq, description_ageReq, description_societyReq, trait_ageReq, trait_alignmentReq, trait_sizeReq, trait_speedReq;
 	@FXML
 	TextField name;
 	@FXML
-	TextArea description, trait_age;
+	TextArea description, description_physical, description_age, description_society, trait_age, trait_alignment, trait_size, trait_speed;
 	@FXML
 	Label mode;
 	@FXML
@@ -37,11 +37,17 @@ public class EditRaceController extends SceneController
 	public boolean init()
 	{
 		if (super.init()) return true;
-		disable_fields = new Node[]{name, description, trait_age};
+		disable_fields = new Node[]{name, description, description_physical, description_age, description_society, trait_age, trait_alignment, trait_size, trait_speed};
 		raceChoice.setOnAction(foo -> loadRace(raceChoice.getValue()));
 		GenericGuiHelper.filterTextField(name, GenericGuiHelper.ALPHANUMERIC_SPACE, 25, "[^\n\t]+", nameReq);
 		GenericGuiHelper.filterTextArea(description, "[^\n]*", 0, "[^\n]+", descriptionReq);
+		GenericGuiHelper.filterTextArea(description_physical, "[^\n]*", 0, "[^\n]+", description_physicalReq);
+		GenericGuiHelper.filterTextArea(description_age, "[^\n]*", 0, "[^\n]+", description_ageReq);
+		GenericGuiHelper.filterTextArea(description_society, "[^\n]*", 0, "[^\n]+", description_societyReq);
 		GenericGuiHelper.filterTextArea(trait_age, "[^\n]*", 0, "[^\n]+", trait_ageReq);
+		GenericGuiHelper.filterTextArea(trait_alignment, "[^\n]*", 0, "[^\n]+", trait_alignmentReq);
+		GenericGuiHelper.filterTextArea(trait_size, "[^\n]*", 0, "[^\n]+", trait_sizeReq);
+		GenericGuiHelper.filterTextArea(trait_speed, "[^\n]*", 0, "[^\n]+", trait_speedReq);
 		editAll.setTooltip(GenericGuiHelper.instaTT("Edits this Race, affecting ALL loaded characters using this race."));
 		editCopy.setTooltip(GenericGuiHelper.instaTT("Edits a copy of this Race, which can be assigned to characters."));
 		delete.setTooltip(GenericGuiHelper.instaTT("Deletes this race. Only works if no loaded characters use this Race."));
@@ -87,10 +93,21 @@ public class EditRaceController extends SceneController
 		cancelToRace = loadedRace;
 		loadedRace = new Race();
 		loadedRaceIndex = -1;
+		clear();
+		setEditing(true);
+	}
+	
+	private void clear()
+	{
 		name.setText("");
 		description.setText("");
+		description_physical.setText("");
+		description_age.setText("");
+		description_society.setText("");
 		trait_age.setText("");
-		setEditing(true);
+		trait_alignment.setText("");
+		trait_size.setText("");
+		trait_speed.setText("");
 	}
 	
 	public void loadRace(Race race)
@@ -135,9 +152,7 @@ public class EditRaceController extends SceneController
 			disable(newRace, false);
 			if (loadedRace == null)
 			{
-				name.setText("");
-				description.setText("");
-				trait_age.setText("");
+				clear();
 				disable(delete, true);
 				disable(editAll, true);
 				disable(editCopy, true);
@@ -146,7 +161,13 @@ public class EditRaceController extends SceneController
 			{
 				name.setText(loadedRace.name);
 				description.setText(loadedRace.description);
+				description_physical.setText(loadedRace.description_physical);
+				description_age.setText(loadedRace.description_age);
+				description_society.setText(loadedRace.description_society);
 				trait_age.setText(loadedRace.trait_age);
+				trait_alignment.setText(loadedRace.trait_alignment);
+				trait_size.setText(loadedRace.trait_size);
+				trait_speed.setText(loadedRace.trait_speed);
 				disable(editCopy, false);
 				boolean doDisable = false;
 				if(Arrays.asList(Race.packRaces).contains(loadedRace))
@@ -252,11 +273,14 @@ public class EditRaceController extends SceneController
 		}
 	}
 	
-	@SuppressWarnings({"RedundantIfStatement"})
+	@SuppressWarnings({"RedundantIfStatement", "DuplicatedCode"})
 	private boolean isInvalid()
 	{
 		if(name.getText() == null || name.getText().equals("")) return true;
 		if(description.getText() == null || description.getText().equals("")) return true;
+		if(description_physical.getText() == null || description_physical.getText().equals("")) return true;
+		if(description_age.getText() == null || description_age.getText().equals("")) return true;
+		if(description_society.getText() == null || description_society.getText().equals("")) return true;
 		if(trait_age.getText() == null || trait_age.getText().equals("")) return true;
 		
 		return false;
@@ -267,7 +291,13 @@ public class EditRaceController extends SceneController
 		if(isInvalid()) return;
 		loadedRace.name = name.getText();
 		loadedRace.description = description.getText();
+		loadedRace.description_physical = description_physical.getText();
+		loadedRace.description_age = description_age.getText();
+		loadedRace.description_society = description_society.getText();
 		loadedRace.trait_age = trait_age.getText();
+		loadedRace.trait_alignment = trait_alignment.getText();
+		loadedRace.trait_size = trait_size.getText();
+		loadedRace.trait_speed = trait_speed.getText();
 	}
 	
 	@FXML

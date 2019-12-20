@@ -108,7 +108,7 @@ public class Main_Gui extends Application
 			}
 			
 			stage.setTitle("D&D Digital DND.Character Sheet");
-			stage.setMinWidth(600);
+			stage.setMinWidth(605);
 			stage.setWidth(stage.getMinWidth());
 			stage.setMinHeight(500);
 			stage.setHeight(stage.getMinHeight());
