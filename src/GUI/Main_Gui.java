@@ -12,8 +12,8 @@ import java.net.URL;
 
 public class Main_Gui extends Application
 {
-	public static Stage stage;
-	public static Scene menu, charsheet, inventory, gen_start, gen_stats_rand, gen_stats_array, gen_stats_pointbuy, gen_char_setup, gen_stats_manual;
+	private static Stage stage;
+	public static Scene menu, charsheet, inventory, gen_start, gen_stats_rand, gen_stats_array, gen_stats_pointbuy, gen_char_setup, gen_stats_manual, edit_race;
 	protected static GenStats_Array_Controller statsarr_controller;
 	protected static GenStats_PointBuy_Controller statspoint_controller;
 	protected static GenStats_Random_Controller statsrand_controller;
@@ -21,6 +21,7 @@ public class Main_Gui extends Application
 	public static GenStartController genstart_controller;
 	public static MainMenuController main_controller;
 	protected static GenCharSetupController charsetup_controller;
+	protected static EditRaceController race_controller;
 	public static CharGen gen;
 	
 	public static void main(String[] args)
@@ -40,6 +41,7 @@ public class Main_Gui extends Application
 				loader.setLocation(u);
 				menu = new Scene(loader.load());
 				main_controller = loader.getController();
+				main_controller.setScene(menu);
 			}
 			
 			{
@@ -48,6 +50,7 @@ public class Main_Gui extends Application
 				loader.setLocation(u);
 				gen_start = new Scene(loader.load());
 				genstart_controller = loader.getController();
+				genstart_controller.setScene(gen_start);
 			}
 			
 			{
@@ -56,6 +59,7 @@ public class Main_Gui extends Application
 				loader.setLocation(u);
 				gen_stats_array = new Scene(loader.load());
 				statsarr_controller = loader.getController();
+				statsarr_controller.setScene(gen_stats_array);
 			}
 			
 			{
@@ -64,6 +68,7 @@ public class Main_Gui extends Application
 				loader.setLocation(u);
 				gen_stats_pointbuy = new Scene(loader.load());
 				statspoint_controller = loader.getController();
+				statspoint_controller.setScene(gen_stats_pointbuy);
 			}
 			
 			{
@@ -72,6 +77,7 @@ public class Main_Gui extends Application
 				loader.setLocation(u);
 				gen_stats_rand = new Scene(loader.load());
 				statsrand_controller = loader.getController();
+				statsrand_controller.setScene(gen_stats_rand);
 			}
 			
 			{
@@ -80,6 +86,7 @@ public class Main_Gui extends Application
 				loader.setLocation(u);
 				gen_char_setup = new Scene(loader.load());
 				charsetup_controller = loader.getController();
+				charsetup_controller.setScene(gen_char_setup);
 			}
 			
 			{
@@ -88,11 +95,23 @@ public class Main_Gui extends Application
 				loader.setLocation(u);
 				gen_stats_manual = new Scene(loader.load());
 				statsmanual_controller = loader.getController();
+				statsmanual_controller.setScene(gen_stats_manual);
+			}
+			
+			{
+				FXMLLoader loader = new FXMLLoader();
+				URL u = getClass().getResource("/GUI/EditRace.fxml");
+				loader.setLocation(u);
+				edit_race = new Scene(loader.load());
+				race_controller = loader.getController();
+				race_controller.setScene(edit_race);
 			}
 			
 			stage.setTitle("D&D Digital DND.Character Sheet");
-			stage.setWidth(600);
-			stage.setHeight(400);
+			stage.setMinWidth(600);
+			stage.setWidth(stage.getMinWidth());
+			stage.setMinHeight(500);
+			stage.setHeight(stage.getMinHeight());
 			stage.setMaxWidth(1200);
 			stage.setMaxHeight(800);
 			stage.setResizable(true);
@@ -103,6 +122,8 @@ public class Main_Gui extends Application
 				                        System.exit(0);
 			                        });
 			Main_Game.init(); //Initialize the DND environment
+			for(SceneController sc : SceneController.controllers)
+				sc.init();
 			stage.show();
 		}
 		catch (IOException e)
@@ -111,5 +132,14 @@ public class Main_Gui extends Application
 			e.printStackTrace();
 			System.exit(1);
 		}
+	}
+	public static void setScene(Scene scene)
+	{
+		SceneController sc = SceneController.getController(scene);
+		if(sc != null)
+		{
+			sc.switchTo();
+		}
+		stage.setScene(scene);
 	}
 }

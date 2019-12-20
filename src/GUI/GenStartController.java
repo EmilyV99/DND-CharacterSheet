@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 
-public class GenStartController
+public class GenStartController extends SceneController
 {
 	@FXML
 	public ChoiceBox<String> typechoice;
@@ -54,7 +54,21 @@ public class GenStartController
 	public void onClose(ActionEvent e)
 	{
 		setStatStyle();
-		Main_Gui.stage.setScene(Main_Gui.menu);
+		Main_Gui.setScene(Main_Gui.menu);
+	}
+	
+	@Override
+	public boolean init()
+	{
+		if(super.init()) return true;
+		typechoice.setOnAction(this::updateTypeChoice);
+		return false;
+	}
+	
+	@Override
+	public void updateText(Event e)
+	{
+		updateTypeChoice(e);
 	}
 	
 	@FXML
@@ -67,22 +81,22 @@ public class GenStartController
 			{
 				case POINT_BUY:
 					Main_Gui.statspoint_controller.updateText();
-					Main_Gui.stage.setScene(Main_Gui.gen_stats_pointbuy);
+					Main_Gui.setScene(Main_Gui.gen_stats_pointbuy);
 					break;
 				case ROLL_RANDOM:
 					Main_Gui.statsrand_controller.updateText();
-					Main_Gui.stage.setScene(Main_Gui.gen_stats_rand);
+					Main_Gui.setScene(Main_Gui.gen_stats_rand);
 					break;
 				case ARRAY:
 				case ROLL_ASSIGN:
 					Main_Gui.statsarr_controller.updateText();
 					Main_Gui.statsarr_controller.resetButtons();
-					Main_Gui.stage.setScene(Main_Gui.gen_stats_array);
+					Main_Gui.setScene(Main_Gui.gen_stats_array);
 					break;
 				case MANUAL:
 					Main_Gui.statsmanual_controller.init();
 					Main_Gui.statsmanual_controller.clear();
-					Main_Gui.stage.setScene(Main_Gui.gen_stats_manual);
+					Main_Gui.setScene(Main_Gui.gen_stats_manual);
 					break;
 			}
 		}

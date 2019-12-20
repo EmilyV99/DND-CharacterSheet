@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GenStats_PointBuy_Controller">
-   <Button fx:id="nextbtn" defaultButton="true" disable="true" layoutX="208.0" layoutY="330.0" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="91.0" text="Next" />
-   <Button cancelButton="true" layoutX="300.0" layoutY="330.0" mnemonicParsing="false" onAction="#onClose" prefHeight="26.0" prefWidth="91.0" text="Back" />
+<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GenStats_PointBuy_Controller">
+   <Button fx:id="nextbtn" defaultButton="true" disable="true" layoutX="300.0" layoutY="394.0" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="91.0" text="Next" />
+   <Button cancelButton="true" layoutX="208.0" layoutY="394.0" mnemonicParsing="false" onAction="#onClose" prefHeight="26.0" prefWidth="91.0" text="Back" />
    <Text layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Str: " wrappingWidth="56.501953125" />
    <Text layoutX="208.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dex:" wrappingWidth="56.501953125" />
    <Text layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Con:" wrappingWidth="56.501953125" />

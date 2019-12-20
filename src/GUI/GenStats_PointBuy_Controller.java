@@ -2,11 +2,12 @@ package GUI;
 
 import DND.Character;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-public class GenStats_PointBuy_Controller
+public class GenStats_PointBuy_Controller extends SceneController
 {
 	@FXML
 	Text strength, dexterity, constitution, intelligence, wisdom, charisma, points;
@@ -14,7 +15,7 @@ public class GenStats_PointBuy_Controller
 	@FXML
 	Button nextbtn, b_str_up, b_dex_up, b_con_up, b_int_up, b_wis_up, b_cha_up, b_str_down, b_dex_down, b_con_down, b_int_down, b_wis_down, b_cha_down;
 	
-	public void updateText()
+	public void updateText(Event e)
 	{
 		Character c = Main_Gui.gen.c;
 		strength.setText("" + c.str);
@@ -27,7 +28,7 @@ public class GenStats_PointBuy_Controller
 		nextbtn.setDisable(Main_Gui.gen.points > 0);
 	}
 	
-	@FXML
+	@FXML @Override
 	public void onReset(ActionEvent e)
 	{
 		Main_Gui.gen.initStats();
@@ -38,7 +39,7 @@ public class GenStats_PointBuy_Controller
 	public void onClose(ActionEvent e)
 	{
 		if (Main_Gui.gen.back())
-			Main_Gui.stage.setScene(Main_Gui.gen_start);
+			Main_Gui.setScene(Main_Gui.gen_start);
 	}
 	
 	@FXML
@@ -47,8 +48,8 @@ public class GenStats_PointBuy_Controller
 		if (Main_Gui.gen.confirm())
 		{
 			Main_Gui.charsetup_controller.init();
-			Main_Gui.charsetup_controller.clear();
-			Main_Gui.stage.setScene(Main_Gui.gen_char_setup);
+			Main_Gui.charsetup_controller.reset();
+			Main_Gui.setScene(Main_Gui.gen_char_setup);
 		}
 	}
 	

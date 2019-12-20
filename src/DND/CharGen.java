@@ -168,7 +168,7 @@ public class CharGen
 		delete();
 		Main_Gui.gen = null;
 		Main_Gui.main_controller.refreshChars();
-		Main_Gui.stage.setScene(Main_Gui.menu);
+		Main_Gui.setScene(Main_Gui.menu);
 	}
 	
 	public enum GenStage

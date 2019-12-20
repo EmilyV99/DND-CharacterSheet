@@ -8,25 +8,23 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class GenStats_Manual_Controller
+public class GenStats_Manual_Controller extends SceneController
 {
 	@FXML
 	TextField strength, dexterity, constitution, intelligence, wisdom, charisma;
 	@FXML
 	Label error, error2;
-	private boolean initialized;
 	
-	public void init()
+	public boolean init()
 	{
-		if (initialized)
-			return;
-		initialized = true;
+		if (super.init()) return true;
 		GenericGuiHelper.filterIntegerTextField(strength, 0, 127, 3);
 		GenericGuiHelper.filterIntegerTextField(dexterity, 0, 127, 3);
 		GenericGuiHelper.filterIntegerTextField(constitution,0, 127, 3);
 		GenericGuiHelper.filterIntegerTextField(intelligence, 0, 127, 3);
 		GenericGuiHelper.filterIntegerTextField(wisdom, 0, 127, 3);
 		GenericGuiHelper.filterIntegerTextField(charisma, 0, 127, 3);
+		return false;
 	}
 	
 	@SuppressWarnings("DuplicatedCode")
@@ -91,7 +89,7 @@ public class GenStats_Manual_Controller
 	public void onClose(ActionEvent e)
 	{
 		if (Main_Gui.gen.back())
-			Main_Gui.stage.setScene(Main_Gui.gen_start);
+			Main_Gui.setScene(Main_Gui.gen_start);
 	}
 	
 	@FXML
@@ -99,7 +97,7 @@ public class GenStats_Manual_Controller
 	{
 		try
 		{
-			updateText(null);
+			updateText();
 			Character c = Main_Gui.gen.c;
 			c.str = Byte.parseByte(strength.getText());
 			c.dex = Byte.parseByte(dexterity.getText());
@@ -110,8 +108,8 @@ public class GenStats_Manual_Controller
 			if (Main_Gui.gen.confirm())
 			{
 				Main_Gui.charsetup_controller.init();
-				Main_Gui.charsetup_controller.clear();
-				Main_Gui.stage.setScene(Main_Gui.gen_char_setup);
+				Main_Gui.charsetup_controller.reset();
+				Main_Gui.setScene(Main_Gui.gen_char_setup);
 			}
 		}
 		catch (Exception ignored)
