@@ -2,20 +2,21 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
 <HBox alignment="CENTER" minHeight="450.0" minWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EditRaceController">
     <VBox alignment="CENTER">
-    <AnchorPane prefHeight="450.0" prefWidth="900.0">
+    <AnchorPane onInputMethodTextChanged="#updateFocus" onKeyTyped="#updateFocus" onMouseClicked="#updateFocus" prefHeight="450.0" prefWidth="900.0">
         <ScrollPane layoutX="307.0" layoutY="82.0" prefHeight="158.0" prefWidth="285.0">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="520.0" prefWidth="260.0">
                 <Label fx:id="trait_ageReq" layoutX="6.0" text="Required" textFill="#b50d0d" />
-                <TextArea fx:id="trait_age" layoutX="6.0" layoutY="18.0" onKeyTyped="#updateText" prefHeight="110.0" prefWidth="260.0" promptText="Trait: Age (Mechanical description)" wrapText="true" />
+                <TextArea fx:id="trait_age" layoutX="6.0" layoutY="18.0" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="110.0" prefWidth="260.0" promptText="Trait: Age (Mechanical description)" wrapText="true" />
                 <Label fx:id="trait_alignmentReq" layoutX="6.0" layoutY="128.0" text="Required" textFill="#b50d0d" />
-                <TextArea fx:id="trait_alignment" layoutX="6.0" layoutY="146.0" onKeyTyped="#updateText" prefHeight="110.0" prefWidth="260.0" promptText="Trait: Alignment Tendencies" wrapText="true" />
+                <TextArea fx:id="trait_alignment" layoutX="6.0" layoutY="146.0" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="110.0" prefWidth="260.0" promptText="Trait: Alignment Tendencies" wrapText="true" />
                 <Label fx:id="trait_sizeReq" layoutX="6.0" layoutY="256.0" text="Required" textFill="#b50d0d" />
-                <TextArea fx:id="trait_size" layoutX="6.0" layoutY="274.0" onKeyTyped="#updateText" prefHeight="110.0" prefWidth="260.0" promptText="Trait: Size" wrapText="true" />
+                <TextArea fx:id="trait_size" layoutX="6.0" layoutY="274.0" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="110.0" prefWidth="260.0" promptText="Trait: Size" wrapText="true" />
                 <Label fx:id="trait_speedReq" layoutX="6.0" layoutY="384.0" text="Required" textFill="#b50d0d" />
-                <TextArea fx:id="trait_speed" layoutX="6.0" layoutY="402.0" onKeyTyped="#updateText" prefHeight="110.0" prefWidth="260.0" promptText="Trait: Speed" wrapText="true" />
+                <TextArea fx:id="trait_speed" layoutX="6.0" layoutY="402.0" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="110.0" prefWidth="260.0" promptText="Trait: Speed" wrapText="true" />
                 <Label layoutX="98.0" text="Age Traits" />
                 <Label layoutX="66.0" layoutY="128.0" text="Alignment Tendencies" />
                 <Label layoutX="101.0" layoutY="256.0" text="Size Trait" />
@@ -25,13 +26,13 @@
         <ScrollPane layoutX="15.0" layoutY="82.0" prefHeight="158.0" prefWidth="285.0">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="520.0" prefWidth="260.0">
                 <Label fx:id="descriptionReq" layoutX="6.0" text="Required" textFill="#b50d0d" />
-                <TextArea fx:id="description" layoutX="6.0" layoutY="18.0" onKeyTyped="#updateText" prefHeight="110.0" prefWidth="260.0" promptText="General Description" wrapText="true" />
+                <TextArea fx:id="description" layoutX="6.0" layoutY="18.0" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="110.0" prefWidth="260.0" promptText="General Description" wrapText="true" />
                 <Label fx:id="description_ageReq" layoutX="6.0" layoutY="128.0" text="Required" textFill="#b50d0d" />
-                <TextArea fx:id="description_age" layoutX="6.0" layoutY="146.0" onKeyTyped="#updateText" prefHeight="110.0" prefWidth="260.0" promptText="Race Age Description" wrapText="true" />
+                <TextArea fx:id="description_age" layoutX="6.0" layoutY="146.0" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="110.0" prefWidth="260.0" promptText="Race Age Description" wrapText="true" />
                 <Label fx:id="description_physicalReq" layoutX="6.0" layoutY="256.0" text="Required" textFill="#b50d0d" />
-                <TextArea fx:id="description_physical" layoutX="6.0" layoutY="274.0" onKeyTyped="#updateText" prefHeight="110.0" prefWidth="260.0" promptText="Physical Description" wrapText="true" />
+                <TextArea fx:id="description_physical" layoutX="6.0" layoutY="274.0" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="110.0" prefWidth="260.0" promptText="Physical Description" wrapText="true" />
                 <Label fx:id="description_societyReq" layoutX="6.0" layoutY="384.0" text="Required" textFill="#b50d0d" />
-                <TextArea fx:id="description_society" layoutX="6.0" layoutY="402.0" onKeyTyped="#updateText" prefHeight="110.0" prefWidth="260.0" promptText="Description of Society" wrapText="true" />
+                <TextArea fx:id="description_society" layoutX="6.0" layoutY="402.0" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="110.0" prefWidth="260.0" promptText="Description of Society" wrapText="true" />
                 <Label layoutX="78.0" text="General Description" />
                 <Label layoutX="73.0" layoutY="128.0" text="Race Age Description" />
                 <Label layoutX="77.0" layoutY="256.0" text="Physical Description" />
@@ -40,7 +41,7 @@
         </ScrollPane>
         <Button fx:id="confirm" defaultButton="true" layoutX="450.0" layoutY="396.0" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="91.0" text="Next" />
         <Button fx:id="cancel" cancelButton="true" layoutX="358.0" layoutY="396.0" mnemonicParsing="false" onAction="#onClose" prefHeight="26.0" prefWidth="91.0" text="Cancel" />
-        <TextField fx:id="name" alignment="CENTER" layoutX="33.0" layoutY="28.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" prefHeight="24.0" prefWidth="179.0" promptText="Race Name" />
+        <TextField fx:id="name" alignment="CENTER" layoutX="33.0" layoutY="28.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="24.0" prefWidth="179.0" promptText="Race Name" />
         <ChoiceBox fx:id="raceChoice" layoutX="372.0" layoutY="28.0" onContextMenuRequested="#updateText" onInputMethodTextChanged="#updateText" onKeyPressed="#updateText" onKeyReleased="#updateText" onKeyTyped="#updateText" onMouseClicked="#updateText" onMouseExited="#updateText" prefWidth="150.0" />
         <Button fx:id="editAll" layoutX="522.0" layoutY="28.0" mnemonicParsing="false" onAction="#onEditAll" text="Edit All" />
         <Button fx:id="editCopy" layoutX="576.0" layoutY="28.0" mnemonicParsing="false" onAction="#onEditCopy" text="Edit Copy" />
@@ -50,32 +51,42 @@
         <Label layoutX="15.0" layoutY="64.0" text="Descriptions (Flavor)" />
         <Label layoutX="308.0" layoutY="64.0" text="Traits (Mechanical)" />
         <Label fx:id="mode" alignment="CENTER" layoutX="417.0" layoutY="5.0" prefHeight="18.0" prefWidth="66.0" text="Edit Mode" textAlignment="CENTER" />
-         <TextArea fx:id="language" layoutX="315.0" layoutY="260.0" onKeyTyped="#updateText" prefHeight="110.0" prefWidth="260.0" promptText="Language" wrapText="true" />
+         <TextArea fx:id="language" layoutX="315.0" layoutY="260.0" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="110.0" prefWidth="260.0" promptText="Language" wrapText="true" />
          <Label fx:id="languageReq" layoutX="315.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
          <Label layoutX="416.0" layoutY="242.0" text="Languages" />
-         <TextField fx:id="str" alignment="CENTER" layoutX="16.0" layoutY="277.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" prefHeight="26.0" prefWidth="48.0" promptText="Str" />
-         <Label fx:id="strReq" layoutX="40.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
-         <Label fx:id="dexReq" layoutX="40.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
-         <Label fx:id="conReq" layoutX="40.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
-         <Label fx:id="intelReq" layoutX="40.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
-         <Label fx:id="wisReq" layoutX="40.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
-         <Label fx:id="chaReq" layoutX="40.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
-         <Label fx:id="assignableReq" layoutX="40.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
-         <TextField fx:id="intel" alignment="CENTER" layoutX="64.0" layoutY="277.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" prefHeight="26.0" prefWidth="48.0" promptText="Int" />
-         <Label alignment="CENTER" layoutX="16.0" layoutY="260.0" prefHeight="18.0" prefWidth="48.0" text="Str" />
-         <Label alignment="CENTER" layoutX="64.0" layoutY="260.0" prefHeight="18.0" prefWidth="48.0" text="Int" />
-         <TextField fx:id="dex" alignment="CENTER" layoutX="16.0" layoutY="320.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" prefHeight="26.0" prefWidth="48.0" promptText="Dex" />
-         <TextField fx:id="wis" alignment="CENTER" layoutX="64.0" layoutY="320.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" prefHeight="26.0" prefWidth="48.0" promptText="Wis" />
-         <Label alignment="CENTER" layoutX="16.0" layoutY="303.0" prefHeight="18.0" prefWidth="48.0" text="Dex" />
-         <Label alignment="CENTER" layoutX="64.0" layoutY="303.0" prefHeight="18.0" prefWidth="48.0" text="Wis" />
-         <TextField fx:id="con" alignment="CENTER" layoutX="16.0" layoutY="363.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" prefHeight="26.0" prefWidth="48.0" promptText="Con" />
-         <TextField fx:id="cha" alignment="CENTER" layoutX="64.0" layoutY="363.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" prefHeight="26.0" prefWidth="48.0" promptText="Cha" />
-         <Label alignment="CENTER" layoutX="16.0" layoutY="346.0" prefHeight="18.0" prefWidth="48.0" text="Con" />
-         <Label alignment="CENTER" layoutX="64.0" layoutY="346.0" prefHeight="18.0" prefWidth="48.0" text="Cha" />
-         <TextField fx:id="assignable" alignment="CENTER" layoutX="40.0" layoutY="406.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" prefHeight="26.0" prefWidth="48.0" promptText="Bonus" />
-         <Label fx:id="assignableLabel" alignment="CENTER" layoutX="35.0" layoutY="389.0" prefHeight="18.0" prefWidth="58.0" text="Choosable" />
-         <ListView layoutX="609.0" layoutY="73.0" prefHeight="297.0" prefWidth="260.0" />
+         <TextField fx:id="str" alignment="CENTER" layoutX="96.0" layoutY="277.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="26.0" prefWidth="48.0" promptText="Str" />
+         <Label fx:id="strReq" layoutX="120.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
+         <Label fx:id="dexReq" layoutX="120.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
+         <Label fx:id="conReq" layoutX="120.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
+         <Label fx:id="intelReq" layoutX="120.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
+         <Label fx:id="wisReq" layoutX="120.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
+         <Label fx:id="chaReq" layoutX="120.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
+         <Label fx:id="assignableReq" layoutX="120.0" layoutY="242.0" text="Required" textFill="#b50d0d" />
+         <TextField fx:id="intel" alignment="CENTER" layoutX="144.0" layoutY="277.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="26.0" prefWidth="48.0" promptText="Int" />
+         <Label alignment="CENTER" layoutX="96.0" layoutY="260.0" prefHeight="18.0" prefWidth="48.0" text="Str" />
+         <Label alignment="CENTER" layoutX="144.0" layoutY="260.0" prefHeight="18.0" prefWidth="48.0" text="Int" />
+         <TextField fx:id="dex" alignment="CENTER" layoutX="96.0" layoutY="320.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="26.0" prefWidth="48.0" promptText="Dex" />
+         <TextField fx:id="wis" alignment="CENTER" layoutX="144.0" layoutY="320.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="26.0" prefWidth="48.0" promptText="Wis" />
+         <Label alignment="CENTER" layoutX="96.0" layoutY="303.0" prefHeight="18.0" prefWidth="48.0" text="Dex" />
+         <Label alignment="CENTER" layoutX="144.0" layoutY="303.0" prefHeight="18.0" prefWidth="48.0" text="Wis" />
+         <TextField fx:id="con" alignment="CENTER" layoutX="96.0" layoutY="363.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="26.0" prefWidth="48.0" promptText="Con" />
+         <TextField fx:id="cha" alignment="CENTER" layoutX="144.0" layoutY="363.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="26.0" prefWidth="48.0" promptText="Cha" />
+         <Label alignment="CENTER" layoutX="96.0" layoutY="346.0" prefHeight="18.0" prefWidth="48.0" text="Con" />
+         <Label alignment="CENTER" layoutX="144.0" layoutY="346.0" prefHeight="18.0" prefWidth="48.0" text="Cha" />
+         <TextField fx:id="assignable" alignment="CENTER" layoutX="120.0" layoutY="406.0" onAction="#updateText" onInputMethodTextChanged="#updateText" onKeyTyped="#updateText" onMouseClicked="#updateFocus" prefHeight="26.0" prefWidth="48.0" promptText="Bonus" />
+         <Label fx:id="assignableLabel" alignment="CENTER" layoutX="115.0" layoutY="389.0" prefHeight="18.0" prefWidth="58.0" text="Choosable" />
+         <ListView fx:id="traitList" layoutX="609.0" layoutY="73.0" onEditCancel="#updateList" onEditCommit="#updateList" onEditStart="#updateList" onInputMethodTextChanged="#updateList" onKeyPressed="#updateList" onKeyTyped="#updateList" onMouseClicked="#updateList" prefHeight="165.0" prefWidth="260.0" />
          <Label layoutX="707.0" layoutY="55.0" text="Traits (Misc)" />
+         <Button fx:id="addTrait" layoutX="676.0" layoutY="238.0" mnemonicParsing="false" onAction="#onAddTrait" text="Add" />
+         <Button fx:id="editTrait" layoutX="714.0" layoutY="238.0" mnemonicParsing="false" onAction="#onEditTrait" text="Edit" />
+         <Button fx:id="deleteTrait" layoutX="751.0" layoutY="238.0" mnemonicParsing="false" onAction="#onDeleteTrait" text="Delete" />
+         <TextArea fx:id="traitViewBox" editable="false" layoutX="606.0" layoutY="262.0" prefHeight="147.0" prefWidth="260.0" wrapText="true" />
+        <AnchorPane fx:id="traitEditPane" layoutX="12.0" layoutY="9.0" prefHeight="426.0" prefWidth="866.0" visible="false">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e7ea" height="426.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="873.0" />
+            <TextArea fx:id="traitEdit" layoutX="205.0" layoutY="96.0" prefHeight="200.0" prefWidth="462.0" promptText="Type a Trait" wrapText="true" />
+            <Button fx:id="cancelTrait" layoutX="385.0" layoutY="296.0" mnemonicParsing="false" onAction="#onCancelTrait" text="Cancel" />
+            <Button fx:id="saveTrait" layoutX="437.0" layoutY="296.0" mnemonicParsing="false" onAction="#onSaveTrait" text="Save" />
+        </AnchorPane>
     </AnchorPane>
     </VBox>
 </HBox>

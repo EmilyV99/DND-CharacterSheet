@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.Arrays;
 
@@ -20,25 +21,32 @@ public class EditRaceController extends SceneController
 	@FXML
 	TextField name, str, dex, con, wis, intel, cha, assignable;
 	@FXML
-	TextArea description, description_physical, description_age, description_society, trait_age, trait_alignment, trait_size, trait_speed, language;
+	TextArea description, description_physical, description_age, description_society, trait_age, trait_alignment, trait_size, trait_speed, language, traitEdit, traitViewBox;
 	@FXML
 	Label mode;
 	@FXML
-	Button confirm, cancel, editAll, editCopy, delete, newRace;
+	Button confirm, cancel, editAll, editCopy, delete, newRace,
+		addTrait, editTrait, deleteTrait, saveTrait, cancelTrait;
 	@FXML
 	ChoiceBox<Race> raceChoice;
+	@FXML
+	ListView<String> traitList;
+	@FXML
+	AnchorPane traitEditPane;
 	private Scene returnScene;
 	private Race loadedRace;
 	private int loadedRaceIndex = -1;
 	private Race cancelToRace;
 	private boolean editing = false;
+	private int focusedTrait, editingTrait;
 	private Node[] disable_fields;
 	public Character currChar;
 	
 	public boolean init()
 	{
 		if (super.init()) return true;
-		disable_fields = new Node[]{name, description, description_physical, description_age, description_society, trait_age, trait_alignment, trait_size, trait_speed};
+		disable_fields = new Node[]{name, description, description_physical, description_age, description_society, trait_age, trait_alignment, trait_size,
+		                            trait_speed, language, str, dex, con, intel, wis, cha, assignable, addTrait};
 		raceChoice.setOnAction(foo -> loadRace(raceChoice.getValue()));
 		GenericGuiHelper.filterTextField(name, GenericGuiHelper.NAMES, 25, "[^\n\t]+", nameReq);
 		GenericGuiHelper.filterTextArea(description, "[^\n]*", 0, "[^\n]+", descriptionReq);
@@ -126,6 +134,7 @@ public class EditRaceController extends SceneController
 		wis.setText("0");
 		cha.setText("0");
 		assignable.setText("0");
+		traitList.getItems().clear();
 	}
 	
 	public void loadRace(Race race)
@@ -148,6 +157,8 @@ public class EditRaceController extends SceneController
 			{
 				loadedRace = race;
 			}
+			traitList.getItems().clear();
+			traitList.getItems().addAll(loadedRace.traits);
 		}
 		updateText();
 	}
@@ -214,11 +225,73 @@ public class EditRaceController extends SceneController
 				disable(delete, doDisable);
 			}
 		}
+		updateFocus(null);
 	}
-	
+	@FXML
+	public void updateList(Event e)
+	{
+		focusedTrait = traitList.getFocusModel().getFocusedIndex();
+		if(traitList.getItems().size() > focusedTrait)
+			traitList.getFocusModel().focus(focusedTrait);
+		if(editing)
+		{
+			disable(editTrait, false);
+			disable(deleteTrait, false);
+		}
+		else
+		{
+			disable(addTrait, true);
+			disable(editTrait, true);
+			disable(deleteTrait, true);
+		}
+		traitViewBox.setText(traitList.getItems().get(focusedTrait));
+	}
+	@FXML
+	public void onAddTrait(Event e)
+	{
+		traitEditPane.setVisible(true);
+		traitEdit.setText("");
+		editingTrait = -1;
+	}
+	@FXML
+	public void onEditTrait(Event e)
+	{
+		traitEditPane.setVisible(true);
+		traitEdit.setText(traitList.getItems().get(focusedTrait));
+		editingTrait = focusedTrait;
+	}
+	@FXML
+	public void onSaveTrait(Event e)
+	{
+		if(editingTrait < 0)
+		{
+			traitList.getItems().add(traitEdit.getText());
+			traitList.getFocusModel().focus(traitList.getItems().size()-1);
+			traitEditPane.setVisible(false);
+			updateList(null);
+		}
+		else
+		{
+			traitList.getItems().set(editingTrait, traitEdit.getText());
+			traitEditPane.setVisible(false);
+		}
+	}
+	@FXML
+	public void onCancelTrait(Event e)
+	{
+		traitEditPane.setVisible(false);
+	}
+	@FXML
+	public void onDeleteTrait(Event e)
+	{
+		traitList.getFocusModel().focusPrevious();
+		traitList.getItems().remove(focusedTrait);
+		updateList(null);
+	}
 	@Override
 	public void switchTo() //ensure editing is refreshed upon entry
 	{
+		traitEditPane.setVisible(false);
 		editing = true;
 		setEditing(false);
 	}
@@ -231,6 +304,8 @@ public class EditRaceController extends SceneController
 			return;
 		}
 		editing = edit;
+		disable(editTrait, true);
+		disable(deleteTrait, true);
 		if (edit)
 		{
 			mode.setText("Edit Mode");
@@ -278,6 +353,20 @@ public class EditRaceController extends SceneController
 			n.setDisable(state);
 			n.setFocusTraversable(!state);
 		}
+	}
+	
+	@FXML
+	public void updateFocus(Event e)
+	{
+		if(!traitList.isFocused() && !traitViewBox.isFocused())
+		{
+			focusedTrait = -1;
+			disable(editTrait, true);
+			disable(deleteTrait, true);
+			traitViewBox.setText("");
+		}
+		else updateList(null);
+		
 	}
 	
 	@FXML
@@ -333,6 +422,8 @@ public class EditRaceController extends SceneController
 		loadedRace.wis = Byte.parseByte(wis.getText());
 		loadedRace.cha = Byte.parseByte(cha.getText());
 		loadedRace.assignable_points = Byte.parseByte(assignable.getText());
+		loadedRace.traits.clear();
+		loadedRace.traits.addAll(traitList.getItems());
 	}
 	
 	@FXML
