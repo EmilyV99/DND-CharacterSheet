@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GenStats_Array_Controller">
-   <Button fx:id="nextbtn" defaultButton="true" disable="true" layoutX="300.0" layoutY="394.0" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="91.0" text="Next" />
-   <Button cancelButton="true" layoutX="208.0" layoutY="394.0" mnemonicParsing="false" onAction="#onClose" prefHeight="26.0" prefWidth="91.0" text="Back" />
-   <Text layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Str: " wrappingWidth="56.501953125" />
-   <Text layoutX="208.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dex:" wrappingWidth="56.501953125" />
-   <Text layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Con:" wrappingWidth="56.501953125" />
-   <Text layoutX="334.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Int:" wrappingWidth="56.501953125" />
-   <Text layoutX="334.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wis:" wrappingWidth="56.501953125" />
-   <Text layoutX="334.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cha:" wrappingWidth="56.501953125" />
-   <Text fx:id="strength" layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
-   <Text fx:id="dexterity" layoutX="208.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
-   <Text fx:id="constitution" layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
-   <Text fx:id="intelligence" layoutX="334.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
-   <Text fx:id="wisdom" layoutX="334.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
-   <Text fx:id="charisma" layoutX="334.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
-   <Button fx:id="reset" layoutX="254.0" layoutY="257.0" mnemonicParsing="false" onAction="#onReset" prefHeight="26.0" prefWidth="91.0" text="Reset" />
-   <Button fx:id="b_str" layoutX="194.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Str" />
-   <Button fx:id="b_dex" layoutX="226.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Dex" />
-   <Button fx:id="b_con" layoutX="264.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Con" />
-   <Button fx:id="b_int" layoutX="302.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Int" />
-   <Button fx:id="b_wis" layoutX="332.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Wis" />
-   <Button fx:id="b_cha" layoutX="368.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Cha" />
-   <Button fx:id="b_0" layoutX="210.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10" />
-   <Button fx:id="b_1" layoutX="240.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10" />
-   <Button fx:id="b_2" layoutX="269.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10" />
-   <Button fx:id="b_3" layoutX="299.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10" />
-   <Button fx:id="b_4" layoutX="329.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10" />
-   <Button fx:id="b_5" layoutX="359.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10" />
-   <Text fx:id="instr" layoutX="99.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSRUCTIONS" textAlignment="CENTER" wrappingWidth="399.501953125" />
-   <Button fx:id="reroll" layoutX="256.0" layoutY="283.0" mnemonicParsing="false" onAction="#onReroll" prefHeight="26.0" prefWidth="91.0" text="Re-Roll" />
-</AnchorPane>
+<HBox alignment="CENTER" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GenStats_Array_Controller" minWidth="600.0" minHeight="450.0">
+    <VBox alignment="CENTER">
+        <AnchorPane prefHeight="450.0" prefWidth="600.0">
+            <Button fx:id="nextbtn" defaultButton="true" disable="true" layoutX="300.0" layoutY="394.0" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="91.0" text="Next"/>
+            <Button cancelButton="true" layoutX="208.0" layoutY="394.0" mnemonicParsing="false" onAction="#onClose" prefHeight="26.0" prefWidth="91.0" text="Back"/>
+            <Text layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Str: " wrappingWidth="56.501953125"/>
+            <Text layoutX="208.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dex:" wrappingWidth="56.501953125"/>
+            <Text layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Con:" wrappingWidth="56.501953125"/>
+            <Text layoutX="334.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Int:" wrappingWidth="56.501953125"/>
+            <Text layoutX="334.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wis:" wrappingWidth="56.501953125"/>
+            <Text layoutX="334.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cha:" wrappingWidth="56.501953125"/>
+            <Text fx:id="strength" layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+            <Text fx:id="dexterity" layoutX="208.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+            <Text fx:id="constitution" layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+            <Text fx:id="intelligence" layoutX="334.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+            <Text fx:id="wisdom" layoutX="334.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+            <Text fx:id="charisma" layoutX="334.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="56.501953125" text="20"/>
+            <Button fx:id="reset" layoutX="254.0" layoutY="257.0" mnemonicParsing="false" onAction="#onReset" prefHeight="26.0" prefWidth="91.0" text="Reset"/>
+            <Button fx:id="b_str" layoutX="194.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Str"/>
+            <Button fx:id="b_dex" layoutX="226.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Dex"/>
+            <Button fx:id="b_con" layoutX="264.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Con"/>
+            <Button fx:id="b_int" layoutX="302.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Int"/>
+            <Button fx:id="b_wis" layoutX="332.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Wis"/>
+            <Button fx:id="b_cha" layoutX="368.0" layoutY="80.0" mnemonicParsing="false" onAction="#onStatType" text="Cha"/>
+            <Button fx:id="b_0" layoutX="210.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10"/>
+            <Button fx:id="b_1" layoutX="240.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10"/>
+            <Button fx:id="b_2" layoutX="269.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10"/>
+            <Button fx:id="b_3" layoutX="299.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10"/>
+            <Button fx:id="b_4" layoutX="329.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10"/>
+            <Button fx:id="b_5" layoutX="359.0" layoutY="46.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStatNum" text="10"/>
+            <Text fx:id="instr" layoutX="99.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSRUCTIONS" textAlignment="CENTER" wrappingWidth="399.501953125"/>
+            <Button fx:id="reroll" layoutX="256.0" layoutY="283.0" mnemonicParsing="false" onAction="#onReroll" prefHeight="26.0" prefWidth="91.0" text="Re-Roll"/>
+        </AnchorPane>
+    </VBox>
+</HBox>

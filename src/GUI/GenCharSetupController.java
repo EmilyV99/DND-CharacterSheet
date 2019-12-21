@@ -26,7 +26,7 @@ public class GenCharSetupController extends SceneController
 		if (super.init())
 			return true;
 		initialized = true;
-		GenericGuiHelper.filterTextField(name, "[A-Za-z \\'\\-]*", 64, ".+", nameReq); //Filters: Alphanumeric + ' ' + '-' + '\'', min 1 char
+		GenericGuiHelper.filterTextField(name, GenericGuiHelper.NAMES, 64, ".+", nameReq); //Filters: Alphanumeric + ' ' + '-' + '\'', min 1 char
 		GenericGuiHelper.filterIntegerTextField(age, 0, Integer.MAX_VALUE, 10, "[1-9][0-9]*", ageReq); //Filters: Value of at least 1, no leading 0s
 		return false;
 	}

@@ -138,5 +138,5 @@ public abstract class GenericGuiHelper
 	}
 	
 	public static final String ALPHABETIC = "[a-zA-Z]*", ALPHANUMERIC = "[a-zA-Z0-9]*", ALPHABETIC_SPACE = "[a-zA-Z ]*", ALPHANUMERIC_SPACE = "[a-zA-Z0-9 ]*",
-	NUMERIC = "[0-9]*", NUMERIC_NEG = "-?[0-9]*", ANY = ".*";
+	NUMERIC = "[0-9]*", NUMERIC_NEG = "-?[0-9]*", ANY = ".*", NAMES = "[A-Za-z '-()\"!]+";
 }

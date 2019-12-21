@@ -4,7 +4,9 @@ import DND.CharGen;
 import DND.Main_Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +25,9 @@ public class Main_Gui extends Application
 	protected static GenCharSetupController charsetup_controller;
 	protected static EditRaceController race_controller;
 	public static CharGen gen;
+	
+	
+	private static final int MINWID = 200, MINHEI = 200, WID = 800, HEI = 600, MAXWID = 0, MAXHEI = 0, STAGE_HEI_OFFS = 30;
 	
 	public static void main(String[] args)
 	{
@@ -108,14 +113,16 @@ public class Main_Gui extends Application
 			}
 			
 			stage.setTitle("D&D Digital DND.Character Sheet");
-			stage.setMinWidth(605);
-			stage.setWidth(stage.getMinWidth());
-			stage.setMinHeight(500);
-			stage.setHeight(stage.getMinHeight());
-			stage.setMaxWidth(1200);
-			stage.setMaxHeight(800);
+			double minwid = calcMinWid();
+			double minhei = calcMinHei();
+			stage.setMinWidth(minwid);
+			stage.setWidth(WID);
+			if(MAXWID > 0) stage.setMaxWidth(MAXWID);
+			stage.setMinHeight(minhei);
+			stage.setHeight(HEI);
+			if(MAXHEI > 0) stage.setMaxHeight(MAXHEI);
 			stage.setResizable(true);
-			stage.setScene(menu);
+			setScene(menu);
 			stage.setOnCloseRequest(windowEvent ->
 			                        {
 				                        System.out.println("Closing!");
@@ -141,5 +148,36 @@ public class Main_Gui extends Application
 			sc.switchTo();
 		}
 		stage.setScene(scene);
+		scene.getRoot().resize(stage.getWidth(), stage.getHeight()-STAGE_HEI_OFFS); //Fix centering
+	}
+	private static double calcMinWid()
+	{
+		double ret = MINWID;
+		for(SceneController sc : SceneController.controllers)
+		{
+			Scene s = sc.getScene();
+			Parent root = s.getRoot();
+			if(root instanceof Pane)
+			{
+				double w = ((Pane) root).getMinWidth();
+				if(ret < w) ret = w;
+			}
+		}
+		return ret;
+	}
+	private static double calcMinHei()
+	{
+		double ret = MINHEI;
+		for(SceneController sc : SceneController.controllers)
+		{
+			Scene s = sc.getScene();
+			Parent root = s.getRoot();
+			if(root instanceof Pane)
+			{
+				double h = ((Pane) root).getMinHeight();
+				if(ret < h) ret = h;
+			}
+		}
+		return ret + STAGE_HEI_OFFS;
 	}
 }

@@ -1,86 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GenStats_PointBuy_Controller">
-   <Button fx:id="nextbtn" defaultButton="true" disable="true" layoutX="300.0" layoutY="394.0" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="91.0" text="Next" />
-   <Button cancelButton="true" layoutX="208.0" layoutY="394.0" mnemonicParsing="false" onAction="#onClose" prefHeight="26.0" prefWidth="91.0" text="Back" />
-   <Text layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Str: " wrappingWidth="56.501953125" />
-   <Text layoutX="208.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dex:" wrappingWidth="56.501953125" />
-   <Text layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Con:" wrappingWidth="56.501953125" />
-   <Text layoutX="334.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Int:" wrappingWidth="56.501953125" />
-   <Text layoutX="334.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wis:" wrappingWidth="56.501953125" />
-   <Text layoutX="334.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cha:" wrappingWidth="56.501953125" />
-   <Text fx:id="strength" layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125" />
-   <Text fx:id="dexterity" layoutX="208.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125" />
-   <Text fx:id="constitution" layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125" />
-   <Text fx:id="intelligence" layoutX="334.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125" />
-   <Text fx:id="wisdom" layoutX="334.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125" />
-   <Text fx:id="charisma" layoutX="334.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125" />
-   <Text fx:id="points" layoutX="271.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Points: 27" wrappingWidth="56.501953125" />
-   <Button layoutX="254.0" layoutY="267.0" mnemonicParsing="false" onAction="#onReset" prefHeight="26.0" prefWidth="91.0" text="Reset" />
-   <Text layoutX="99.0" layoutY="99.0" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="It costs 1 point to add to a stat. To bring a stat to 14 or 15 costs 2 points." textAlignment="CENTER" wrappingWidth="400.0" />
-   <Text layoutX="100.0" layoutY="116.0" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All stats must be between 8 and 15, inclusive." textAlignment="CENTER" wrappingWidth="400.0" />
-   <Button fx:id="b_str_up" layoutX="271.0" layoutY="148.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_str_down" layoutX="181.0" layoutY="148.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_dex_up" layoutX="271.0" layoutY="165.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_dex_down" layoutX="181.0" layoutY="165.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_con_up" layoutX="271.0" layoutY="182.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_con_down" layoutX="181.0" layoutY="182.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_int_up" layoutX="397.0" layoutY="148.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_int_down" layoutX="307.0" layoutY="148.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_wis_up" layoutX="397.0" layoutY="165.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_wis_down" layoutX="307.0" layoutY="165.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_cha_up" layoutX="397.0" layoutY="181.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-   <Button fx:id="b_cha_down" layoutX="307.0" layoutY="181.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
-      <font>
-         <Font size="8.0" />
-      </font>
-   </Button>
-</AnchorPane>
+<HBox alignment="CENTER" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GenStats_PointBuy_Controller" minWidth="600.0" minHeight="450.0">
+    <VBox alignment="CENTER">
+        <AnchorPane prefHeight="450.0" prefWidth="600.0">
+            <Button fx:id="nextbtn" defaultButton="true" disable="true" layoutX="300.0" layoutY="394.0" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="91.0" text="Next"/>
+            <Button cancelButton="true" layoutX="208.0" layoutY="394.0" mnemonicParsing="false" onAction="#onClose" prefHeight="26.0" prefWidth="91.0" text="Back"/>
+            <Text layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Str: " wrappingWidth="56.501953125"/>
+            <Text layoutX="208.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dex:" wrappingWidth="56.501953125"/>
+            <Text layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Con:" wrappingWidth="56.501953125"/>
+            <Text layoutX="334.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Int:" wrappingWidth="56.501953125"/>
+            <Text layoutX="334.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wis:" wrappingWidth="56.501953125"/>
+            <Text layoutX="334.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cha:" wrappingWidth="56.501953125"/>
+            <Text fx:id="strength" layoutX="208.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125"/>
+            <Text fx:id="dexterity" layoutX="208.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125"/>
+            <Text fx:id="constitution" layoutX="208.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125"/>
+            <Text fx:id="intelligence" layoutX="334.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125"/>
+            <Text fx:id="wisdom" layoutX="334.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125"/>
+            <Text fx:id="charisma" layoutX="334.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" textAlignment="RIGHT" wrappingWidth="56.501953125"/>
+            <Text fx:id="points" layoutX="271.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Points: 27" wrappingWidth="56.501953125"/>
+            <Button layoutX="254.0" layoutY="267.0" mnemonicParsing="false" onAction="#onReset" prefHeight="26.0" prefWidth="91.0" text="Reset"/>
+            <Text layoutX="99.0" layoutY="99.0" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="It costs 1 point to add to a stat. To bring a stat to 14 or 15 costs 2 points." textAlignment="CENTER" wrappingWidth="400.0"/>
+            <Text layoutX="100.0" layoutY="116.0" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All stats must be between 8 and 15, inclusive." textAlignment="CENTER" wrappingWidth="400.0"/>
+            <Button fx:id="b_str_up" layoutX="271.0" layoutY="148.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_str_down" layoutX="181.0" layoutY="148.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_dex_up" layoutX="271.0" layoutY="165.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_dex_down" layoutX="181.0" layoutY="165.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_con_up" layoutX="271.0" layoutY="182.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_con_down" layoutX="181.0" layoutY="182.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_int_up" layoutX="397.0" layoutY="148.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_int_down" layoutX="307.0" layoutY="148.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_wis_up" layoutX="397.0" layoutY="165.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_wis_down" layoutX="307.0" layoutY="165.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_cha_up" layoutX="397.0" layoutY="181.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onPlus" prefHeight="2.0" prefWidth="20.0" text="+" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+            <Button fx:id="b_cha_down" layoutX="307.0" layoutY="181.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinus" prefHeight="2.0" prefWidth="20.0" text="-" textAlignment="CENTER" textOverrun="CLIP">
+                <font>
+                    <Font size="8.0"/>
+                </font>
+            </Button>
+        </AnchorPane>
+    </VBox>
+</HBox>

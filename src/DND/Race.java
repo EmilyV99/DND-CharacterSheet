@@ -10,7 +10,7 @@ public class Race
 	public static ArrayList<Race> customRaces = new ArrayList<>();
 	public static Race[] packRaces;
 	private static boolean initialized;
-	byte str, dex, con, intel, wis, cha, assignable_points;
+	public byte str, dex, con, intel, wis, cha, assignable_points;
 	public String name, description, description_age, description_physical, description_society;
 	public String trait_age, trait_alignment, trait_size, trait_speed;
 	public ArrayList<String> traits = new ArrayList<>();

@@ -15,11 +15,12 @@ import java.util.Arrays;
 public class EditRaceController extends SceneController
 {
 	@FXML
-	Label nameReq, descriptionReq, description_physicalReq, description_ageReq, description_societyReq, trait_ageReq, trait_alignmentReq, trait_sizeReq, trait_speedReq;
+	Label nameReq, strReq, dexReq, conReq, wisReq, intelReq, chaReq, assignableReq, assignableLabel,
+			descriptionReq, description_physicalReq, description_ageReq, description_societyReq, trait_ageReq, trait_alignmentReq, trait_sizeReq, trait_speedReq, languageReq;
 	@FXML
-	TextField name;
+	TextField name, str, dex, con, wis, intel, cha, assignable;
 	@FXML
-	TextArea description, description_physical, description_age, description_society, trait_age, trait_alignment, trait_size, trait_speed;
+	TextArea description, description_physical, description_age, description_society, trait_age, trait_alignment, trait_size, trait_speed, language;
 	@FXML
 	Label mode;
 	@FXML
@@ -39,7 +40,7 @@ public class EditRaceController extends SceneController
 		if (super.init()) return true;
 		disable_fields = new Node[]{name, description, description_physical, description_age, description_society, trait_age, trait_alignment, trait_size, trait_speed};
 		raceChoice.setOnAction(foo -> loadRace(raceChoice.getValue()));
-		GenericGuiHelper.filterTextField(name, GenericGuiHelper.ALPHANUMERIC_SPACE, 25, "[^\n\t]+", nameReq);
+		GenericGuiHelper.filterTextField(name, GenericGuiHelper.NAMES, 25, "[^\n\t]+", nameReq);
 		GenericGuiHelper.filterTextArea(description, "[^\n]*", 0, "[^\n]+", descriptionReq);
 		GenericGuiHelper.filterTextArea(description_physical, "[^\n]*", 0, "[^\n]+", description_physicalReq);
 		GenericGuiHelper.filterTextArea(description_age, "[^\n]*", 0, "[^\n]+", description_ageReq);
@@ -48,9 +49,18 @@ public class EditRaceController extends SceneController
 		GenericGuiHelper.filterTextArea(trait_alignment, "[^\n]*", 0, "[^\n]+", trait_alignmentReq);
 		GenericGuiHelper.filterTextArea(trait_size, "[^\n]*", 0, "[^\n]+", trait_sizeReq);
 		GenericGuiHelper.filterTextArea(trait_speed, "[^\n]*", 0, "[^\n]+", trait_speedReq);
+		GenericGuiHelper.filterTextArea(language, "[^\n]*", 0, "[^\n]+", languageReq);
+		GenericGuiHelper.filterIntegerTextField(str, 0, 20, 0, ".+", strReq);
+		GenericGuiHelper.filterIntegerTextField(dex, 0, 20, 0, ".+", dexReq);
+		GenericGuiHelper.filterIntegerTextField(con, 0, 20, 0, ".+", conReq);
+		GenericGuiHelper.filterIntegerTextField(intel, 0, 20, 0, ".+", intelReq);
+		GenericGuiHelper.filterIntegerTextField(wis, 0, 20, 0, ".+", wisReq);
+		GenericGuiHelper.filterIntegerTextField(cha, 0, 20, 0, ".+", chaReq);
+		GenericGuiHelper.filterIntegerTextField(assignable, 0, 20, 0, ".+", assignableReq);
 		editAll.setTooltip(GenericGuiHelper.instaTT("Edits this Race, affecting ALL loaded characters using this race."));
 		editCopy.setTooltip(GenericGuiHelper.instaTT("Edits a copy of this Race, which can be assigned to characters."));
 		delete.setTooltip(GenericGuiHelper.instaTT("Deletes this race. Only works if no loaded characters use this Race."));
+		assignableLabel.setTooltip(GenericGuiHelper.instaTT("This many stats of the player's choice get +1 for this Race."));
 		return false;
 	}
 	
@@ -108,6 +118,14 @@ public class EditRaceController extends SceneController
 		trait_alignment.setText("");
 		trait_size.setText("");
 		trait_speed.setText("");
+		language.setText("");
+		str.setText("0");
+		dex.setText("0");
+		con.setText("0");
+		intel.setText("0");
+		wis.setText("0");
+		cha.setText("0");
+		assignable.setText("0");
 	}
 	
 	public void loadRace(Race race)
@@ -134,6 +152,7 @@ public class EditRaceController extends SceneController
 		updateText();
 	}
 	
+	@SuppressWarnings("DuplicatedCode")
 	@FXML
 	public void updateText(Event e)
 	{
@@ -168,6 +187,14 @@ public class EditRaceController extends SceneController
 				trait_alignment.setText(loadedRace.trait_alignment);
 				trait_size.setText(loadedRace.trait_size);
 				trait_speed.setText(loadedRace.trait_speed);
+				language.setText(loadedRace.languages);
+				str.setText(""+loadedRace.str);
+				dex.setText(""+loadedRace.dex);
+				con.setText(""+loadedRace.con);
+				intel.setText(""+loadedRace.intel);
+				wis.setText(""+loadedRace.wis);
+				cha.setText(""+loadedRace.cha);
+				assignable.setText(""+loadedRace.assignable_points);
 				disable(editCopy, false);
 				boolean doDisable = false;
 				if(Arrays.asList(Race.packRaces).contains(loadedRace))
@@ -273,19 +300,19 @@ public class EditRaceController extends SceneController
 		}
 	}
 	
-	@SuppressWarnings({"RedundantIfStatement", "DuplicatedCode"})
+	@SuppressWarnings({"DuplicatedCode"})
 	private boolean isInvalid()
 	{
-		if(name.getText() == null || name.getText().equals("")) return true;
-		if(description.getText() == null || description.getText().equals("")) return true;
-		if(description_physical.getText() == null || description_physical.getText().equals("")) return true;
-		if(description_age.getText() == null || description_age.getText().equals("")) return true;
-		if(description_society.getText() == null || description_society.getText().equals("")) return true;
-		if(trait_age.getText() == null || trait_age.getText().equals("")) return true;
+		TextInputControl[] text = new TextInputControl[]{name, description, description_physical, description_age, description_society, trait_age, trait_alignment, trait_size, trait_speed, language, str, dex, con, intel, wis, cha, assignable};
+		for(TextInputControl t : text)
+		{
+			if(t.getText()==null || t.getText().equals("")) return true;
+		}
 		
 		return false;
 	}
 	
+	@SuppressWarnings("DuplicatedCode")
 	private void setLoadedRace()
 	{
 		if(isInvalid()) return;
@@ -298,6 +325,14 @@ public class EditRaceController extends SceneController
 		loadedRace.trait_alignment = trait_alignment.getText();
 		loadedRace.trait_size = trait_size.getText();
 		loadedRace.trait_speed = trait_speed.getText();
+		loadedRace.languages = language.getText();
+		loadedRace.str = Byte.parseByte(str.getText());
+		loadedRace.dex = Byte.parseByte(dex.getText());
+		loadedRace.con = Byte.parseByte(con.getText());
+		loadedRace.intel = Byte.parseByte(intel.getText());
+		loadedRace.wis = Byte.parseByte(wis.getText());
+		loadedRace.cha = Byte.parseByte(cha.getText());
+		loadedRace.assignable_points = Byte.parseByte(assignable.getText());
 	}
 	
 	@FXML
