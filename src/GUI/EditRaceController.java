@@ -244,7 +244,9 @@ public class EditRaceController extends SceneController
 			disable(editTrait, true);
 			disable(deleteTrait, true);
 		}
-		traitViewBox.setText(traitList.getItems().get(focusedTrait));
+		if(focusedTrait > -1)
+			traitViewBox.setText(traitList.getItems().get(focusedTrait));
+		else traitViewBox.setText("");
 	}
 	@FXML
 	public void onAddTrait(Event e)
@@ -267,14 +269,13 @@ public class EditRaceController extends SceneController
 		{
 			traitList.getItems().add(traitEdit.getText());
 			traitList.getFocusModel().focus(traitList.getItems().size()-1);
-			traitEditPane.setVisible(false);
-			updateList(null);
 		}
 		else
 		{
 			traitList.getItems().set(editingTrait, traitEdit.getText());
-			traitEditPane.setVisible(false);
 		}
+		traitEditPane.setVisible(false);
+		updateList(null);
 	}
 	@FXML
 	public void onCancelTrait(Event e)
